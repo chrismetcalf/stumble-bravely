@@ -107,7 +107,7 @@ class Crime
       view = JSON::parse(response.body)
       if view["meta"].nil? || view["data"].nil?
         raise "Could not parse server response"
-      elsif view["data"].count <= 0
+      elsif view["data"].size <= 0
         # No results
         return []
       end
@@ -130,6 +130,7 @@ class Point
 
       # Geocode the address
       request = Net::HTTP::Get.new("/api/geocoding/#{CGI::escape(@address)}")
+      request.add_field("X-APP-TOKEN", "An7lKFieeU9qgHhuJMN1MVYcJ")
       response = Net::HTTP.start(DOMAIN, 80){ |http| http.request(request) }
       point = JSON::parse(response.body)
       if point.nil? || !point.key?("lat") || !point.key?("long")
@@ -158,12 +159,12 @@ def message(zip_code)
 
     if crimes.nil? || crimes.size <= 0
       say "You've found a mysterious corner of Baltimore that is crime free. You should buy real estate."
-    elsif crimes.count < 100
-      say "I found only #{crimes.count} crime reports in your area. You're probably safe to walk."
-    elsif crimes.count >= 100 && crimes.count < 500
-      say "There have been #{crimes.count} crimes reported in your area. You probably want to take a cab."
+    elsif crimes.size < 100
+      say "I found only #{crimes.size} crime reports in your area. You're probably safe to walk."
+    elsif crimes.size >= 100 && crimes.size < 500
+      say "There have been #{crimes.size} crimes reported in your area. You probably want to take a cab."
     else
-      say "RUNNNNNNNNNNNNNNNNNNNNNNNNNN!!!! (#{crimes.count} reported crimes)"
+      say "RUNNNNNNNNNNNNNNNNNNNNNNNNNN!!!! (#{crimes.size} reported crimes)"
     end
   rescue Exception => e
     say "An error has occurred. I'm sorry for the trouble."
