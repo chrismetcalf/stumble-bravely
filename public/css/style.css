@@ -9,6 +9,11 @@ body {
   text-align: center;
 }
 
+h1 {
+  text-align: center;
+  font-size: 2em;
+}
+
 #content {
   width: 600px;
   margin: 0px auto;
@@ -16,7 +21,7 @@ body {
   padding: 15px;
 }
 
-#content img#tree {
+#content img#drunk{
   display: block;
   margin: 0px auto;
   width: 256px;
