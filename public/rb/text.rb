@@ -131,7 +131,12 @@ class Point
       # Geocode the address
       request = Net::HTTP::Get.new("/api/geocoding/#{CGI::escape(@address)}")
       request.add_field("X-APP-TOKEN", "An7lKFieeU9qgHhuJMN1MVYcJ")
-      response = Net::HTTP.start(DOMAIN, 80){ |http| http.request(request) }
+      response = Net::HTTP.start(DOMAIN, 443){ |http|
+        http.use_ssl = true
+        # THIS IS BAD!!! BAD BAD BAD!!! Do as I say not as I do!
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+        http.request(request)
+      }
       point = JSON::parse(response.body)
       if point.nil? || !point.key?("lat") || !point.key?("long")
         return
