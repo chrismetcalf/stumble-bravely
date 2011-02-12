@@ -1,0 +1,42 @@
+body {
+  color: #000;
+  font-family: helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.25;
+  background-color: #fff;
+  margin: 50px 0;
+  padding: 0;
+  text-align: center;
+}
+
+#content {
+  width: 600px;
+  margin: 0px auto;
+  text-align: left;
+  padding: 15px;
+}
+
+#content img#tree {
+  display: block;
+  margin: 0px auto;
+  width: 256px;
+}
+
+.number {
+  font-size: 5em;
+  margin: 10px;
+  text-align: center;
+}
+
+.disclaimer {
+  font-size: 0.8em;
+}
+
+.powered-by {
+  padding-top: 20px;
+}
+
+.powered-by img {
+  display: block;
+  margin: 10px auto;
+}

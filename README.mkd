@@ -1,0 +1,1 @@
+A sad knockoff of [Stumble Safely](http://www.appsfordemocracy.org/stumble-safely/), built using the [Socrata Open Data API](http://dev.socrata.com) and [Tropo](http://www.tropo.com).
