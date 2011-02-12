@@ -96,8 +96,8 @@ class Crime
     }
 
     request = Net::HTTP::Post.new("/api/views/INLINE/rows.json?method=index")
+    request.add_field("X-APP-TOKEN", "An7lKFieeU9qgHhuJMN1MVYcJ")
     request.body = query.to_json
-    puts query.to_json
     request.content_type = "application/json"
     response = Net::HTTP.start(DOMAIN, 80){ |http| http.request(request) }
 
